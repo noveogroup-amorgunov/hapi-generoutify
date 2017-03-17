@@ -29,3 +29,37 @@
 ```js
 npm install hapi-generoutify --save
 ```
+
+## Usage
+
+You can use [hapi-generoutify](https://github.com/noveogroup-amorgunov/hapi-generoutify) for generator router's handlers (and the `yield` keyword), and [co](https://github.com/tj/co) today.
+
+### Registering the Plugin
+
+```javascript
+const Hapi = require('hapi');
+const hapiGeneroutify = require('hapi-generoutify');
+
+const server = new Hapi.Server();
+server.register([hapiGeneroutify], (error) => { ... });
+```
+
+Now all route's handler will be wrap to `co.wrap`.
+
+```javascript
+function* getUserAction(request, reply) {
+  const user = yield database.User.findOne({ email: request.payload.email });
+
+  if (!user) {
+    yield Promise.reject(Boom.notFound('USER_NOT_FOUND'));
+  }
+    
+  reply(user.toObject());
+}
+
+server.route({
+  method: 'GET',
+  path: '/',
+  handler: getUserAction
+});
+```

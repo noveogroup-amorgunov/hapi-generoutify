@@ -1,6 +1,6 @@
 {
   "name": "hapi-generoutify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wraps route's handlers into generator",
   "main": "src/index.js",
   "scripts": {
