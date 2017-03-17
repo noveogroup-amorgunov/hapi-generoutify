@@ -1,0 +1,32 @@
+{
+  "name": "hapi-generoutify",
+  "version": "1.0.0",
+  "description": "Wraps route's handlers into generator",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ./test/**/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noveogroup-amorgunov/hapi-generoutify.git"
+  },
+  "keywords": [
+    "hapi",
+    "generator",
+    "hapi-plugin"
+  ],
+  "author": "Alexander Morgunov <fxl@list.ru> (https://github.com/noveogroup-amorgunov)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noveogroup-amorgunov/hapi-generoutify/issues"
+  },
+  "homepage": "https://github.com/noveogroup-amorgunov/hapi-generoutify#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "co": "^4.6.0",
+    "hapi": "^16.1.0"
+  }
+}
