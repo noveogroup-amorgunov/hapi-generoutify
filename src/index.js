@@ -24,14 +24,15 @@ exports.register = function (server, options, next) {
 
   // replace server's route method
   server.__proto__.route = function (routes, ...args) {
-    const generoutes = routes.map((route) => {
-      const _handler = route.handler || route.config.handler;
+    const routesList = Array.isArray(routes) ? routes : [routes];
+    const generoutes = routesList.map((route) => {
+      const _handler = route.handler || (route.config && route.config.handler);
 
       if (_handler) {
         route.handler = wrapGen(_handler);
       }
 
-      if (route.config.handler) {
+      if (route.config && route.config.handler) {
         delete route.config.handler;
       }
 
