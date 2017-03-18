@@ -63,3 +63,20 @@ server.route({
   handler: getUserAction
 });
 ```
+
+Also you can pass just simple function to handler and it will work as before.
+
+By default your generator are catched by global errorHandler, which reply error. You can define custom handler as hapi server method like:
+
+```javascript
+
+server.methods('errorHandler', (reply, err) => {
+  if (err instanceof AwesomeHttpError) {
+    reply(...).code(404);
+  } else {
+    // ...
+  }
+});
+```
+
+See full examples in [examples folder](https://github.com/noveogroup-amorgunov/hapi-generoutify/tree/master/examples).
